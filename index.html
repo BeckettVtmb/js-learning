@@ -7,14 +7,19 @@
 </head>
 
 <body>
-  <script>
-  "use strict";
-  alert("Привет, JavaScript");
-  var admin, name;
-  name = "Василий";
-  admin = name;
-  alert(admin);
-  </script>
+  <p>Грузим скрипт с основным заданием!</p> 
+  <script src="./master_script.js"></script>
+  <p>Грузим 1 тестовый скрипт синхронный! Следующий код не выполнится, пока он не отработает.</p> 
+  <script src="./script1_synch.js"></script>
+  <p>Грузим 2 тестовый  скрипт асинхронный типа async! Следующий код отработает параллельно с ним.</p> 
+  <script src="./script2_asynch.js" async></script>
+  <p>Грузим 3 и 4 тестовые  скрипты асинхронный типа defer! Следующий код отработает параллельно с ним, но последовательность загрузки скриптов сохранится.</p> 
+  <script src="./script3_asynch.js" defer></script>
+  <script src="./script4_asynch.js" defer></script>
 </body>
+
+<footer>
+  <p>Все скрипты загрузились!</p> 
+</footer>
 
 </html>
