@@ -1,25 +1,17 @@
-"use strict"; // Задание 2 к 4 уроку
-function countBs(a) {
-	if (typeof(a) != "string") {
-		return "!!Параметр функции countBs() - не строчный!!";
-	}
-	var i, j = 0, l = a.length;
-	for (i = 0; i < l;  ++i) {
-		j += (a.charAt(i) === "B") ? 1 : 0;
-	}
-	return j;
+"use strict";
+function numberToObject(a) {
+	var result = {};
+	result.единицы = 0;
+	result.десятки = 0;
+	result.сотни = 0;
+	result.единицы = a % 10;
+	result.десятки = ~~((a % 100) / 10);
+	result.сотни = ~~(a / 100);
+	return result;
 }
-function countChar(a, b) {
-	if ((typeof(a) != "string") || (typeof(b) != "string")) {
-		return "!!Один из параметров функции countChar() - не строчный!!";
-	}
-	var i, j = 0, l = a.length;
-	for (i = 0; i < l;  ++i) {
-		j += (a.charAt(i) === b) ? 1 : 0;
-	}
-	return j;
-}
-console.log('Вывод функции countBs("BooleanBbB"):');
-console.log(countBs("BooleanBbB"));
-console.log('Вывод функции countChar("BooleanBbB", "o"):');
-console.log(countChar("BooleanBbB", "o"));
+console.log (numberToObject(245));
+console.log (numberToObject(127));
+console.log (numberToObject(999));
+console.log (numberToObject(0));
+console.log (numberToObject(2));
+console.log (numberToObject(35));
