@@ -1,7 +1,6 @@
 "use strict";
 function objectToQueryString(a) {
-	var i, j;
-	var result = "";
+	var i, result = "";
 	for (i in a) {
 		result += i + "=" + a[i] + "&";
 		
