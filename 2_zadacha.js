@@ -1,24 +1,30 @@
-"use strict";
-function numberToObject(a) {
-	var result = {};
-	if ((a  >  999) || (a < 0) || (typeof(a) != "number")) {
-		console.log ("Неверный диапазон числа или тип параметра!");
-		return result;
+"use strict"
+
+function reverseArray(a) {
+	var b = [],  i = (a.length-1), j = 0;
+	while (i >= 0) {
+		b[j] = a[i];
+		i--;
+		j++;
 	}
-	result.единицы = 0;
-	result.десятки = 0;
-	result.сотни = 0;
-	result.единицы = a % 10;
-	result.десятки = ~~((a % 100) / 10);
-	result.сотни = ~~(a / 100);
-	return result;
+	return b;
 }
-console.log (numberToObject(245));
-console.log (numberToObject(127));
-console.log (numberToObject(999));
-console.log (numberToObject(0));
-console.log (numberToObject(2));
-console.log (numberToObject(35));
-console.log (numberToObject("Test"));
-console.log (numberToObject(1000));
-console.log (numberToObject(-267));
+
+function reverseArrayInPlace(a) {
+	var i = (a.length-1), j = 0, k = 0, b = [];
+	while (k < a.length) {
+		b[k] = a[k];
+		k++;
+	}
+	while (i >= 0) {
+		a[j] = b[i];
+		i--;
+		j++;
+	}
+	return a;
+}
+var a = ["test", "to", "me", "testy"];
+console.log(reverseArray(a));
+console.log(a);
+reverseArrayInPlace(a);
+console.log(a);
