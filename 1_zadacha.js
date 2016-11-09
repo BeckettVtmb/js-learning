@@ -1,22 +1,45 @@
-"use strict";
-function tTe(a, b, c) {
-	var func = {};
-	func.boofer = [a, b, c];
-	func.main = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A" ,"B" ,"C" ,"D" ,"E" ,"F"];
-	func.result = [0, 0];
-	func.hex = "";
-	for (var i = 0; i < 3; ++i) {
-			for (var j = 2; j != 0; --j) {			
-				func.result[j-1] = func.main[func.boofer[i] % 16];
-				func.boofer[i] = ~~(func.boofer[i] / 16);
-			}
-			for (var k = 0; k < 2; ++k) {
-				func.hex += func.result[k];
-			}
-	}
-	return func.hex;
+"use strict"
+
+function arrayToList(a) {
+	return ({value: a[0], rest: {value: a[1], rest: {value: a[2]}}});
 }
-console.log (tTe(145, 168, 245));
-console.log (tTe(255, 0, 255));
-console.log (tTe(255, 255, 0));
-console.log (tTe(0, 255, 255));
+
+function listToArray(b) {
+	var massiv = [], i = 0;
+	function inList(c) {
+		if ("rest" in c) {
+			massiv[i] = c.value;
+			i++;
+			inList(c.rest);
+		} else return massiv[i] = c.value
+	}
+	inList(b);
+	return massiv;
+}
+
+function prepend(el, list) {
+	return ({value: el, rest: list})
+}
+
+function nth(list, num) {
+	if ((num < 0)||(typeof(num) != "number")) return "Вы ввели отрицательное число и воовсе не число!"
+	var i = 0, result;
+	function showEl(d) {
+		if (i == num) {
+			return result = d.value;
+		}
+		else if ("rest" in d) {
+				i++;
+				showEl(d.rest);
+			}
+		else return result =  undefined;
+	}
+	showEl(list);
+	return result;
+}
+
+
+console.log(arrayToList([1, 2, 3]));
+console.log(nth(arrayToList([1, 2, 3]), 2));
+console.log(prepend(5, arrayToList([1, 2, 3])));
+console.log(listToArray(prepend(5, arrayToList([1, 2, 3]))));
