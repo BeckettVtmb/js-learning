@@ -59,6 +59,19 @@ function csvFormat(users) {
   }).join('\r\n');
 }
 
+function search(value, users) {
+	var result = [];
+	var re = new RegExp(value, 'i');
+
+	users.forEach(function(item){
+		var findString =  item.firstName + ' ' + item.lastName;
+		if (re.test(findString)) {
+			result.push(item);
+		}
+	})
+	return result;
+}
+
 //for (var i = 0; i < users.length; ++i) {
 //  console.log('Id: ' + users[i].id, 'Имя: ' + users[i].firstName, ' Фамилия: ' + users[i].lastName, ' Дата рождения: ' + users[i].birthDay, ' Телефоны: ' + users[i].phones.join(', '));
 //}
