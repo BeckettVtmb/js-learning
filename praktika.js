@@ -80,3 +80,20 @@ addUser()
 console.log(csvFormat(users));
 remUser(1)
 console.log(csvFormat(users));
+
+function printUser(user){
+		var row = document.createElement('div');
+		row.id = 'u_' + user.id;
+		row.className = 'row';
+		row.innerHTML = '<div class="col">' + user.firstName + '</div>' + '<div class="col">' + user.lastName + '</div>' +
+					'<div class="col">' + user.birthDay + '</div>' + '<div class="col">' + user.phones.join(', ') + '</div>' + '<div class="del_btn" onclick="delHandler(event)">X</div>';
+		return row;
+}
+
+window.onload = function(event) {
+	var usersTable = document.getElementById('users');
+	console.log (usersTable);
+	users.forEach(function(user){
+		usersTable.appendChild(printUser(user));
+	});
+};
